@@ -11,3 +11,7 @@ php artisan make:model Request -mf
 ```
 php artisan make:controller RequestController --api
 ```
+3.  Создал контроллер для взаимодействия с моделью пользователей
+```
+php artisan make:controller UserController
+```
