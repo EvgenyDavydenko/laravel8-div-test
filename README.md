@@ -33,3 +33,7 @@ php artisan make:resource RequestResource
 ```
 php artisan make:notification ResponseMessage
 ```
+Создал API Resource для профиля пользователя
+```
+php artisan make:resource UserResource
+```

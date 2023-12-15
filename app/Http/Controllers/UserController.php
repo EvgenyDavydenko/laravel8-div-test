@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
@@ -73,11 +74,10 @@ class UserController extends Controller
     }
 
     public function profile(){
-        return response()->json([
-            "status" => true,
-            "message" => "User Profile information",
-            "data" => auth()->user()
-        ]);
+
+        $u = User::findOrFail(auth()->user()->id);
+        return new UserResource($u);
+
     }
 
     public function logout(){
