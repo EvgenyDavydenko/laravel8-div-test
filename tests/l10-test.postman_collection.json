@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "c84fc222-0c64-4c48-a4ab-b795a952c6f9",
+		"name": "l10-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15182889"
+	},
+	"item": [
+		{
+			"name": "Получить все заявки без аутентификации",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/requests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"requests"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
