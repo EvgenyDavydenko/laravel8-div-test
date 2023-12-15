@@ -29,3 +29,7 @@ php artisan make:middleware IsAdminMiddleware
 ```
 php artisan make:resource RequestResource
 ```
+6.  Реализовал метод ответа на конкретную задачу и отправку ответа пользователю по email
+```
+php artisan make:notification ResponseMessage
+```

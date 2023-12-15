@@ -31,6 +31,7 @@ Route::group(["middleware" => ["auth:sanctum"]], function(){
 
     Route::group(["middleware" => ["is_admin"]], function(){
         Route::get('requests', [RequestController::class, 'index']);
+        Route::patch('requests/{id}', [RequestController::class, 'update']);
     });
 
 });

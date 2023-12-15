@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Request as AppRequest;
+use App\Notifications\ResponseMessage;
 use Illuminate\Http\Request;
 use App\Http\Resources\RequestResource;
 
@@ -63,7 +64,21 @@ class RequestController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            "comment" => "required",
+        ]);
+        $r = AppRequest::findOrFail($id);
+
+        $r->status = 'Resolved';
+        $r->comment = $request->comment;
+
+        $r->save();
+        $r->notify(new ResponseMessage($r));
+
+        return response()->json([
+            "status" => true,
+            "message" => "Request update succesfully",
+        ]);
     }
 
     /**
