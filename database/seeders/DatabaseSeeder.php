@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@mail.loc',
+            'is_admin' => true,
         ]);
 
         \App\Models\User::factory(5)->has(

@@ -28,6 +28,8 @@ Route::group(["middleware" => ["auth:sanctum"]], function(){
     Route::get("profile", [UserController::class, "profile"]);
     Route::get("logout", [UserController::class, "logout"]);
 
-    Route::get('requests', [RequestController::class, 'index']);
+    Route::group(["middleware" => ["is_admin"]], function(){
+        Route::get('requests', [RequestController::class, 'index']);
+    });
 
 });
