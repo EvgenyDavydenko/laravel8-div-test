@@ -270,6 +270,68 @@
 			"response": []
 		},
 		{
+			"name": "Оставить заявку",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Request add succesfully\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"у меня есть вопрос\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/requests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Получить данные своего профиля",
 			"event": [
 				{
@@ -505,7 +567,7 @@
 			"response": []
 		},
 		{
-			"name": "Получить все заявки Админом",
+			"name": "Получить активные заявки Админом",
 			"event": [
 				{
 					"listen": "test",
@@ -542,11 +604,11 @@
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": ""
+					"mode": "formdata",
+					"formdata": []
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/requests",
+					"raw": "http://localhost:8000/api/requests?status=Active",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -555,6 +617,12 @@
 					"path": [
 						"api",
 						"requests"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Active"
+						}
 					]
 				}
 			},

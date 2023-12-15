@@ -24,3 +24,8 @@ isAdmin middleware
 ```
 php artisan make:middleware IsAdminMiddleware
 ```
+5.  Реализовал методы получение заявок ответственным лицом и отправки заявки пользователями.
+Создал API Resource для удобного контроля отправляемых данных
+```
+php artisan make:resource RequestResource
+```
